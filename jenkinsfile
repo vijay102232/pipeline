@@ -18,6 +18,7 @@ pipeline {
 						'''
 					}
 				}
+			}
 		}
 		stage('Deploy') {
 			agent { label 'agent2' }
