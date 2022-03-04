@@ -3,14 +3,14 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				sh ' echo "this is to build" '
+				sh 'echo "this is to build"'
 			}
 		}
 		stage('Test') {
 			step {
 				sh '''
 					sleep 5
-					echo " to test the build "
+					echo "to test the build"
 				'''
 				}
 			}
@@ -18,7 +18,7 @@ pipeline {
 				step {
 				sh '''
 				sleep 10
-				echo " This is deploy stage"
+				echo "This is deploy stage"
 				}
 			}
 		}
