@@ -1,22 +1,23 @@
 pipeline {
 	agent none
 	stages {
-		parallel {
-		stage('Build') {
-			agent { label 'agent1' }
-				steps {
-				sh 'echo "this is to build"'
+		stage ('Build and test') {
+			parallel {
+				stage('Build') {
+					agent { label 'agent1' }
+						steps {
+						sh 'echo "this is to build"'
+						}
+					}
+				stage('Test') {
+					agent { label 'agent1' }
+						steps {
+						sh '''
+						sleep 5
+						echo "to test the build"
+						'''
+					}
 				}
-			}
-		stage('Test') {
-			agent { label 'agent1' }
-			steps {
-				sh '''
-					sleep 5
-					echo "to test the build"
-				'''
-				}
-			}
 		}
 		stage('Deploy') {
 			agent { label 'agent2' }
